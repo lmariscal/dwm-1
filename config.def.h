@@ -19,8 +19,17 @@ static const char *colors[][3]      = {
 };
 
 static const char *const autostart[] = {
-	"st", NULL,
-	NULL /* terminate */
+	"doas", "/usr/bin/tlp", "bat", NULL,
+    "doas", "/usr/bin/powertop", "--auto-tune", NULL,
+    "doas", "/usr/bin/light", "-I", NULL,
+    "xset", "r", "rate", "300", "35", NULL,
+    "xrdb", "/home/four/.Xresources", NULL,
+    "xset", "+fp", "/home/four/.local/share/fonts", NULL,
+    "xset", "fp", "rehash", NULL,
+    "redshift", NULL,
+    "/home/four/.fehbg", NULL,
+    "dwmblocks", NULL,
+	NULL
 };
 
 /* tagging */
