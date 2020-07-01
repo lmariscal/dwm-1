@@ -7,8 +7,7 @@ static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
-    "-wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1",
-    "-xos4-terminus-medium-r-normal--12-120-72-72-c-60-iso10646-1",
+    "Terminus:style=Regular:size=11:antialias=true:autohint=true",
     "FontAwesome:style=Regular:size=11:antialias=true:autohint=true"
 };
 static const char dmenufont[]       = "Terminus:size=10";
@@ -65,7 +64,7 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_base, "-nf", col_ltgray, "-sb", col_red, "-sf", col_black, NULL };
+static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_base, "-nf", col_ltgray, "-sb", col_red, "-sf", col_black, "-nhb", col_base, "-nhf", col_red, "-shb" col_red, "-shf", col_ltgray, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char scratchpadname[] = "Scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
