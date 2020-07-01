@@ -19,8 +19,8 @@ static const char col_gray[]        = "#949ba3";
 static const char col_red[]         = "#8f4c48";
 static const char *colors[][3]      = {
 	/*               fg          bg         border   */
-	[SchemeNorm] = { col_red,    col_base,  col_red },
-	[SchemeSel]  = { col_ltgray, col_black, col_red  },
+	[SchemeNorm] = { col_ltgray, col_black, col_red },
+	[SchemeSel]  = { col_red,    col_base,  col_red  },
 };
 
 /* tagging */
@@ -29,7 +29,7 @@ static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
 static const Rule rules[] = {
 	/* class                instance    title               tags mask   isfloating  isterminal  noswallow   monitor */
-	{ "st-256color",        NULL,       NULL,               0,          0,          1,          -1,         -1 },
+	{ "St",        NULL,       NULL,               0,          0,          1,          -1,         -1 },
 	{ NULL,                 NULL,       "Spotify-TUI",      1 << 8,     0,          1,          0,          -1 },
 	{ NULL,                 NULL,       "tremc",            1 << 8,     0,          1,          0,          -1 },
 	{ "Pavucontrol",        NULL,       NULL,               0,          1,          0,          0,          -1 },
