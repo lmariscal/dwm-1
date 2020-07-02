@@ -18,6 +18,20 @@ static const char *colors[][3]      = {
 	[SchemeSel]  = { col_gray4, col_cyan,  col_cyan  },
 };
 
+static const char *const autostart[] = {
+	"doas", "/usr/bin/tlp", "bat", NULL,
+    "doas", "/usr/bin/powertop", "--auto-tune", NULL,
+    "doas", "/usr/bin/light", "-I", NULL,
+    "xset", "r", "rate", "300", "35", NULL,
+    "xrdb", "/home/four/.Xresources", NULL,
+    "xset", "+fp", "/home/four/.local/share/fonts", NULL,
+    "xset", "fp", "rehash", NULL,
+    "redshift", NULL,
+    "/home/four/.fehbg", NULL,
+    "dwmblocks", NULL,
+	NULL
+};
+
 /* tagging */
 static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
 
