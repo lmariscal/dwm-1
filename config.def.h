@@ -14,10 +14,10 @@ static const char *fonts[]          = {
 };
 static const char dmenufont[]       = "Terminus:size=10";
 static const char col_base[]        = "#323a46";
-static const char col_black[]       = "#22282f";
-static const char col_ltgray[]      = "#f0f5f8";
+static const char col_black[]       = "#10060a";
+static const char col_white[]       = "#ffffff";
 static const char col_gray[]        = "#949ba3";
-static const char col_red[]         = "#8f4c48";
+static const char col_red[]         = "#2c1118";
 static const char *colors[][3]      = {
 	/*               fg          bg         border   */
 	[SchemeNorm] = { col_ltgray, col_black, col_red },
@@ -26,7 +26,7 @@ static const char *colors[][3]      = {
 
 /* tagging */
 /* static const char *tags[] = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }; */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "", }; 
+static const char *tags[] = { "", "", "", "", "", "", "", "", "", }; 
 
 static const Rule rules[] = {
 	/* class                instance    title               tags mask   isfloating  isterminal  noswallow   monitor */
