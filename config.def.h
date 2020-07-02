@@ -9,19 +9,18 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
     "Siji:size=12",
     "cryptofont:style=Regular:size=10",
-    "Terminus:style=Regular:size=12:antialias=true:autohint=true",
-    "FontAwesome:style=Regular:size=11:antialias=true:autohint=true"
+    "xos4 Terminus:style=Regular:size=8",
 };
 static const char dmenufont[]       = "Terminus:size=10";
-static const char col_base[]        = "#323a46";
+static const char col_base[]        = "#2c1118";
 static const char col_black[]       = "#10060a";
 static const char col_white[]       = "#ffffff";
 static const char col_gray[]        = "#949ba3";
-static const char col_red[]         = "#2c1118";
+static const char col_dark[]        = "#282a2e";
 static const char *colors[][3]      = {
 	/*               fg          bg         border   */
-	[SchemeNorm] = { col_ltgray, col_black, col_red },
-	[SchemeSel]  = { col_red,    col_gray,  col_red  },
+	[SchemeNorm] = { col_white,  col_base,  col_gray },
+	[SchemeSel]  = { col_gray    col_dark,  col_dark },
 };
 
 /* tagging */
