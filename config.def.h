@@ -2,19 +2,19 @@
 #include <X11/XF86keysym.h>
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 3;        /* border pixel of windows */
 static const unsigned int gappx     = 5;        /* gaps between windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 0;       /* vertical padding of bar */
 static const int sidepad            = 0;       /* horizontal padding of bar */
-static const int horizpadbar        = 2;        /* horizontal padding for statusbar */
-static const int vertpadbar         = 2;        /* vertical padding for statusbar */
+static const int horizpadbar        = 6;        /* horizontal padding for statusbar */
+static const int vertpadbar         = 6;        /* vertical padding for statusbar */
 static const char *fonts[]          = {
     "Siji:size=12",
-    "cryptofont:style=Regular:size=10",
-    "xos4 Terminus:style=Regular:size=8",
+    "cherry:style=Regular:size=11"
+    "cryptofont:style=Regular:size=9",
 };
 static const char dmenufont[]       = "Terminus:size=10";
 static const char col_base[]        = "#2c1118";
@@ -48,18 +48,17 @@ static const char *const autostart[] = {
 static const char *tags[] = { "", "", "", "", "", "", "", "", "", }; 
 
 static const Rule rules[] = {
-	/* class                instance    title               tags mask   isfloating  isterminal  noswallow   monitor */
-	{ "St",                 NULL,       NULL,               0,          0,          1,          -1,         -1 },
-	{ NULL,                 NULL,       "Spotify-TUI",      1 << 8,     0,          0,          0,          -1 },
-	{ NULL,                 NULL,       "tremc",            1 << 8,     0,          0,          0,          -1 },
-	{ NULL,                 NULL,       "BTC/USD",          0,          1,          0,          0,          -1 },
-	{ NULL,                 NULL,       "Pulse Mixer",      0,          1,          0,          0,          -1 },
-	{ "Pavucontrol",        NULL,       NULL,               0,          1,          0,          0,          -1 },
-	{ "Blueman-manager",    NULL,       NULL,               0,          1,          0,          0,          -1 },
-	{ "TelegramDesktop",    NULL,       NULL,               1 << 7,     1,          0,          0,          -1 },
-	{ "discord",            NULL,       NULL,               1 << 7,     0,          0,          0,          -1 },
-	{ "Virt-manager",       NULL,       NULL,               1 << 3,     1,          0,          0,          -1 },
-	{ NULL,                 NULL,       "win10 on QEMU/KVM",1 << 3,     0,          0,          1,          -1 },
+	/* class                instance    title               tags mask   isfloating  monitor */
+	{ NULL,                 NULL,       "Spotify-TUI",      1 << 8,     0,          -1 },
+	{ NULL,                 NULL,       "tremc",            1 << 8,     0,          -1 },
+	{ NULL,                 NULL,       "BTC/USD",          0,          1,          -1 },
+	{ NULL,                 NULL,       "Pulse Mixer",      0,          1,          -1 },
+	{ "Pavucontrol",        NULL,       NULL,               0,          1,          -1 },
+	{ "Blueman-manager",    NULL,       NULL,               0,          1,          -1 },
+	{ "TelegramDesktop",    NULL,       NULL,               1 << 7,     1,          -1 },
+	{ "discord",            NULL,       NULL,               1 << 7,     0,          -1 },
+	{ "Virt-manager",       NULL,       NULL,               1 << 3,     1,          -1 },
+	{ NULL,                 NULL,       "win10 on QEMU/KVM",1 << 3,     0,          -1 },
 };
 
 /* layout(s) */
@@ -89,8 +88,6 @@ static const Layout layouts[] = {
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
 static const char *dmenucmd[] = { "dmenu_run", "-c","-l", "20", "-m", dmenumon, "-fn", dmenufont, "-nb", col_base, "-nf", col_gray, "-sb", col_dark, "-sf", col_gray, "-nhb", col_base, "-nhf", col_white, "-shb", col_dark, "-shf", col_white, NULL };
 static const char *termcmd[]  = { "st", NULL };
-static const char scratchpadname[] = "scratchpad";
-static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 static const char scratchpadname[] = "Scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 /* system control */
