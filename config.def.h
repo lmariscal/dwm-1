@@ -12,8 +12,8 @@ static const int sidepad            = 0;       /* horizontal padding of bar */
 static const int horizpadbar        = 6;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 6;        /* vertical padding for statusbar */
 static const char *fonts[]          = {
-    "Siji:size=12",
-    "cherry:style=Regular:size=11"
+    "cherry:style=Regular:size=11:antialias=true:autohint=true",
+    "Siji",
     "cryptofont:style=Regular:size=9",
 };
 static const char dmenufont[]       = "Terminus:size=10";
