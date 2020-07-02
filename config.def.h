@@ -8,6 +8,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = {
     "Siji:size=12",
+    "cryptofont:style=Regular:size=10",
     "Terminus:style=Regular:size=12:antialias=true:autohint=true",
     "FontAwesome:style=Regular:size=11:antialias=true:autohint=true"
 };
@@ -29,15 +30,17 @@ static const char *tags[] = { "", "", "", "", "", "", "", "
 
 static const Rule rules[] = {
 	/* class                instance    title               tags mask   isfloating  isterminal  noswallow   monitor */
-	{ "St",        NULL,       NULL,               0,          0,          1,          -1,         -1 },
-	{ NULL,                 NULL,       "Spotify-TUI",      1 << 8,     0,          1,          0,          -1 },
-	{ NULL,                 NULL,       "tremc",            1 << 8,     0,          1,          0,          -1 },
+	{ "St",                 NULL,       NULL,               0,          0,          1,          -1,         -1 },
+	{ NULL,                 NULL,       "Spotify-TUI",      1 << 8,     0,          0,          0,          -1 },
+	{ NULL,                 NULL,       "tremc",            1 << 8,     0,          0,          0,          -1 },
+	{ NULL,                 NULL,       "BTC/USD",          0,          1,          0,          0,          -1 },
+	{ NULL,                 NULL,       "Pulse Mixer",      0,          1,          0,          0,          -1 },
 	{ "Pavucontrol",        NULL,       NULL,               0,          1,          0,          0,          -1 },
 	{ "Blueman-manager",    NULL,       NULL,               0,          1,          0,          0,          -1 },
 	{ "TelegramDesktop",    NULL,       NULL,               1 << 7,     1,          0,          0,          -1 },
 	{ "discord",            NULL,       NULL,               1 << 7,     0,          0,          0,          -1 },
 	{ "Virt-manager",       NULL,       NULL,               1 << 3,     1,          0,          0,          -1 },
-	{ NULL,                 NULL,       "win10 on QEMU/KVM",1 << 3,     1,          0,          1,          -1 },
+	{ NULL,                 NULL,       "win10 on QEMU/KVM",1 << 3,     0,          0,          1,          -1 },
 };
 
 /* layout(s) */
