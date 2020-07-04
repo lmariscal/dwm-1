@@ -16,12 +16,12 @@ All patches that I have applied are located in [patches](./patches).
 + [**awesome bar:**](https://dwm.suckless.org/patches/awesomebar) Make status bar similar to awesomewm. On this build, this patch only makes visual changes.
 + [**bar padding:**](https://dwm.suckless.org/patches/barpadding) Add option to add space between bar and edge of screen.
 + [**always center:**](https://dwm.suckless.org/patches/alwayscenter) Floating windows are always centered.
-+ [**cfacts:**](https://dwm.suckless.org/patches/cfacts) Use `super + shift + j/k` to resize slave windows
-+ [**gaps:**](https://dwm.suckless.org/patches/fullgaps) Use `super + -/+(=)` to adjust gap size, `super + shift + '+'` to reset 
++ [**cfacts:**](https://dwm.suckless.org/patches/cfacts) Use `Super + Shift + j/k` to resize slave windows
++ [**gaps:**](https://dwm.suckless.org/patches/fullgaps) Use `Super + -/+(=)` to adjust gap size, `Super + Shift + '+'` to reset 
 + [**hide_vacant_tags:**](https://dwm.suckless.org/patches/hide_vacant_tags) Hide vacant tags from the status bar
 + [**monocle symbol:**](https://dwm.suckless.org/patches/monoclesymbol) Always show monocle layout symbol in status bar, rather than window count
 + [**pertag:**](https://dwm.suckless.org/patches/pertag) Allow each tag to have its own layout
-+ [**scratchpad:**](https://dwm.suckless.org/patches/scratchpad) Use `super + grave` to show and hide scratchpad terminal
++ [**scratchpad:**](https://dwm.suckless.org/patches/scratchpad) Use `Super + grave` to show and hide scratchpad terminal
 + [**status padding:**](https://dwm.suckless.org/patches/statuspadding) Add padding to status bar text *(not positive this is working properly)*
 
 Support for clickable status bar modules is also included, when used along with a patched version of dwmblocks. See [here](https://dwm.suckless.org/patches/statuscmd/).
