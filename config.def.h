@@ -9,7 +9,7 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const int vertpad            = 0;       /* vertical padding of bar */
 static const int sidepad            = 0;       /* horizontal padding of bar */
-static const int horizpadbar        = 6;        /* horizontal padding for statusbar */
+static const int horizpadbar        = 15;        /* horizontal padding for statusbar */
 static const int vertpadbar         = 6;        /* vertical padding for statusbar */
 static const char *fonts[]          = {
     "cherry:style=Regular:size=11:antialias=true:autohint=true",
@@ -49,8 +49,9 @@ static const char *tags[] = { "", "", "", "", "", "", "", "
 
 static const Rule rules[] = {
 	/* class                instance    title               tags mask   isfloating  monitor */
-	{ NULL,                 NULL,       "Spotify-TUI",      1 << 8,     0,          -1 },
+	{ NULL,                 NULL,       "Spotify TUI",      1 << 8,     0,          -1 },
 	{ NULL,                 NULL,       "tremc",            1 << 8,     0,          -1 },
+	{ NULL,                 NULL,       "vifm",             0,          1,          -1 },
 	{ NULL,                 NULL,       "BTC/USD",          0,          1,          -1 },
 	{ NULL,                 NULL,       "Pulse Mixer",      0,          1,          -1 },
 	{ "Pavucontrol",        NULL,       NULL,               0,          1,          -1 },
@@ -82,7 +83,7 @@ static const Layout layouts[] = {
 	{ MODKEY|ControlMask|ShiftMask, KEY,      toggletag,      {.ui = 1 << TAG} },
 
 /* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd) { .v = (const char*[]){ "/bin/sh", "-c", cmd, NULL } }
+#define SHCMD(cmd) { .v = (const char*[]){ "/bin/bash", "-c", cmd, NULL } }
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
@@ -92,26 +93,21 @@ static const char scratchpadname[] = "Scratchpad";
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "120x34", NULL };
 /* system control */
 static const char *suspend_cmd[] = { "doas", "/usr/bin/zzz", NULL };
-static const char *raise_audio[] = { "/home/four/.local/bin/tools/volume.sh", "up", NULL };
-static const char *lower_audio[] = { "/home/four/.local/bin/tools/volume.sh", "down", NULL };
-static const char *mute_audio[] = { "/home/four/.local/bin/tools/volume.sh", "toggle", NULL };
-static const char *raise_brightness[] = { "/home/four/.local/bin/tools/light.sh", "up", NULL };
-static const char *lower_brightness[] = { "/home/four/.local/bin/tools/light.sh", "down", NULL };
 static const char *playpause[] = { "playerctl", "--all-players", "play-pause", NULL };
 static const char *nexttrack[] = { "playerctl", "--all-players", "next", NULL };
 static const char *prevtrack[] = { "playerctl", "--all-players", "previous", NULL };
 /* applications */
-static const char *filescmd[] = { "st", "-t", "vifm", "-e", "/home/four/.config/vifm/scripts/vifmrun", NULL };
+static const char *filescmd[] = { "st", "-g", "120x40", "-t", "vifm", "-e", "/home/four/.config/vifm/scripts/vifmrun", NULL };
 static const char *gotop[] = { "st", "-t", "go-top", "-e", "gotop", "-pf", NULL };
 static const char *pavucontrol[] = { "pavucontrol", NULL };
 static const char *blueman[] = { "blueman-manager", NULL };
 static const char *spotify[] = { "st", "-t", "Spotify TUI", "-e", "/home/four/.local/bin/spt", NULL };
 static const char *torrent[] = { "st", "-t", "tremc", "-e", "tremc", NULL };
 /* dmenu scripts */
-static const char *passmenu[] = { "/home/four/.local/bin/tools/passmenu", NULL };
-static const char *dmenu_school[] = { "/home/four/.local/bin/dmenu/dmenu_courses.sh", NULL };
-static const char *dmenu_sshot[] = { "/home/four/.local/bin/dmenu/dmenu_sshot.sh", NULL };
-static const char *dmenu_unicode[] = { "/home/four/.local/bin/dmenu/dmenu_unicode.sh", NULL };
+static const char *passmenu[] = { "passmenu", NULL };
+static const char *dmenu_school[] = { "dmenu_courses.sh", NULL };
+static const char *dmenu_sshot[] = { "dmenu_sshot.sh", NULL };
+static const char *dmenu_unicode[] = { "dmenu_unicode.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key         function        argument */
@@ -168,16 +164,16 @@ static Key keys[] = {
 	TAGKEYS(                        XK_9,                       8)
 	{ MODKEY|ShiftMask,             XK_Return,  spawn,          {.v = termcmd } },
     /* volume control */
-    { 0, XF86XK_AudioMute,                      spawn,          {.v = mute_audio } },
-    { 0, XF86XK_AudioLowerVolume,               spawn,          {.v = lower_audio } },
-    { 0, XF86XK_AudioRaiseVolume,               spawn,          {.v = raise_audio } },
+    { 0, XF86XK_AudioMute,                      spawn,          SHCMD("pamixer -t; kill -44 $(pidof dwmblocks)") },
+    { 0, XF86XK_AudioLowerVolume,               spawn,          SHCMD("pamixer --allow-boost -d 3; kill -44 $(pidof dwmblocks)") },
+    { 0, XF86XK_AudioRaiseVolume,               spawn,          SHCMD("pamixer --allow-boost -i 3; kill -44 $(pidof dwmblocks)") },
     /* media control */
     { 0, XF86XK_AudioNext,                      spawn,          {.v = nexttrack } },
     { 0, XF86XK_AudioPrev,                      spawn,          {.v = prevtrack } },
     { 0, XF86XK_AudioPlay,                      spawn,          {.v = playpause } },
     /* backlight control */
-    { 0, XF86XK_MonBrightnessUp,                spawn,          {.v = raise_brightness } },
-    { 0, XF86XK_MonBrightnessDown,              spawn,          {.v = lower_brightness } },
+    { 0, XF86XK_MonBrightnessUp,                spawn,          SHCMD("doas /usr/bin/light -A 5; pkill -RTMIN+11 dwmblocks") },
+    { 0, XF86XK_MonBrightnessDown,              spawn,          SHCMD("doas /usr/bin/light -U 5; pkill -RTMIN+11 dwmblocks") },
     /* applications: launched with Alt+Super */
     { MODKEY|Mod1Mask,              XK_r,       spawn,          {.v = gotop } },
     { MODKEY|Mod1Mask,              XK_t,       spawn,          {.v = torrent } },
