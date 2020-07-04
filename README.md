@@ -1,6 +1,6 @@
 # Dynamic Window Manager
 
-![](/dwm.png)
+![](./mydwm.png)
 
 ##### This is my personal build of [Suckless's](https://dwm.suckless.org) dwm. 
 Each branch of this repository contains a feature implemented on top of the base build of dwm from Suckless. 
