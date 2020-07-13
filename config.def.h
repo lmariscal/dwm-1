@@ -29,7 +29,6 @@ static const char *const autostart[] = {
     "redshift", NULL,
     "/home/four/.fehbg", NULL,
     "dwmblocks", NULL,
-    "xsetroot", "-cursor_name", "left_ptr", NULL,
     "picom", "-b", NULL,
 	NULL
 };
